@@ -90,7 +90,7 @@ En un televisor no hay navegador cómodo para bajar un APK. Usá la app
 (gratis, en la tienda de tu TV) y cargá este código cuando te lo pida:
 
 ```
-2281073
+9186097
 ```
 
 Eso te lleva directo al instalador. Sin escribir ninguna dirección larga

@@ -30,7 +30,7 @@ const copy = {
       'Es el mismo APK de arriba — la app detecta sola que corre en Android TV y cambia a su propia interfaz para control remoto. Un televisor no tiene el mismo navegador que un celular, así que el APK tiene que llegar por alguna de estas tres formas:',
     tvSteps: [
       { Icon: Usb, title: 'Por USB', desc: 'Descargalo en el celular o la PC, copialo a un pendrive y abrilo desde el gestor de archivos del televisor.' },
-      { Icon: FileDown, title: 'Con la app "Downloader"', desc: 'Instalá "Downloader" (de AFTVnews) desde la tienda del televisor, y ahí escribí el código 2281073 (o pegá la URL) — la descarga e instala directo, sin cables.' },
+      { Icon: FileDown, title: 'Con la app "Downloader"', desc: 'Instalá "Downloader" (de AFTVnews) desde la tienda del televisor, y ahí escribí el código 9186097 (o pegá la URL) — la descarga e instala directo, sin cables.' },
       { Icon: Tv, title: 'Gestor de archivos con red', desc: 'Si el televisor tiene uno con soporte SMB/FTP, se puede compartir la carpeta de descargas del celular o la PC y abrir el APK desde ahí.' },
     ],
     downloaderCodeText: 'Código para Downloader',
@@ -74,7 +74,7 @@ const copy = {
       "It's the same APK from above — the app detects on its own that it's running on Android TV and switches to its own remote-friendly interface. A TV doesn't have the same browser a phone does, so the APK needs to get there one of these three ways:",
     tvSteps: [
       { Icon: Usb, title: 'Over USB', desc: 'Download it on your phone or PC, copy it to a flash drive, and open it from the TV\'s file manager.' },
-      { Icon: FileDown, title: 'With the "Downloader" app', desc: 'Install "Downloader" (by AFTVnews) from the TV\'s app store, then type the code 2281073 (or paste the APK URL) — it downloads and installs it directly, no cables needed.' },
+      { Icon: FileDown, title: 'With the "Downloader" app', desc: 'Install "Downloader" (by AFTVnews) from the TV\'s app store, then type the code 9186097 (or paste the APK URL) — it downloads and installs it directly, no cables needed.' },
       { Icon: Tv, title: 'A network file manager', desc: 'If the TV has one with SMB/FTP support, share the downloads folder from your phone or PC and open the APK from there.' },
     ],
     downloaderCodeText: 'Downloader App Code',
@@ -229,7 +229,7 @@ export default function Android() {
                 <div className="text-[12px] leading-relaxed" style={{ color: 'var(--text-faint)' }}>{c.tvDesc}</div>
                 <div className="mt-4 flex flex-col items-center justify-center rounded-xl border border-dashed p-3 transition-colors hover:border-solid" style={{ borderColor: 'var(--accent)', background: 'var(--accent-faint, rgba(255,255,255,0.05))' }}>
                   <span className="text-[11px] font-medium uppercase tracking-wider" style={{ color: 'var(--text-faint)' }}>{c.downloaderCodeText}</span>
-                  <span className="font-[family-name:var(--font-display)] text-3xl font-bold tracking-widest mt-0.5" style={{ color: 'var(--accent)' }}>2281073</span>
+                  <span className="font-[family-name:var(--font-display)] text-3xl font-bold tracking-widest mt-0.5" style={{ color: 'var(--accent)' }}>9186097</span>
                 </div>
               </div>
             </div>
