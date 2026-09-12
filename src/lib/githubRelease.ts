@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 
 export const REPO = 'Litdemonick/PrismHub';
-export const APP_VERSION = 'v1.0.31';
+// Respaldo para cuando useLatestRelease() todavía no contestó o no
+// encuentra nada — este repo recién empieza a recibir releases, así que
+// hasta que llegue la primera acá, esto es lo único que hay para mostrar.
+// Actualizar a mano cada vez que cambie la última versión real publicada.
+export const APP_VERSION = 'v1.0.142';
 
 export type ReleaseAsset = { name: string; browser_download_url: string; size: number };
 export type ReleaseInfo = {
