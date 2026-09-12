@@ -93,7 +93,7 @@ export const dict = {
     'download.betaZone': 'Beta',
     'download.betaZoneDesc': 'Lo único que existe por ahora — probado, pero todavía en pulido activo.',
     'download.stableZone': 'Versión estable · oficial',
-    'download.stableZoneDesc': 'La primera versión 1.0 llega cuando la beta esté lo bastante probada.',
+    'download.stableZoneDesc': 'La primera versión 1.1.0 llega cuando la beta esté lo bastante probada.',
     'download.stableEmpty': 'Todavía no hay nada acá: la primera versión estable va a ser la 1.1.0, cuando la beta esté lo bastante probada.',
     'download.releases': 'Todas las versiones en GitHub Releases →',
 
@@ -188,7 +188,7 @@ export const dict = {
     'download.betaZone': 'Beta',
     'download.betaZoneDesc': "The only thing that exists right now — tested, but still actively being polished.",
     'download.stableZone': 'Stable version · official',
-    'download.stableZoneDesc': "The first 1.0 release ships once the beta has been tested enough.",
+    'download.stableZoneDesc': "The first 1.1.0 release ships once the beta has been tested enough.",
     'download.stableEmpty': "Nothing here yet — for now, the whole app lives in Beta.",
     'download.releases': 'All versions on GitHub Releases →',
 
