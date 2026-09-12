@@ -454,20 +454,22 @@ function DownloadSection() {
                     {t('platforms.install')}
                   </Link>
                   {href && (
-                    // Link, no <a href>: el sitio enruta con HashRouter — un
-                    // <a href="/windows"> normal navega el NAVEGADOR a esa
-                    // ruta absoluta, que en GitHub Pages no existe (falta el
-                    // "#" que HashRouter necesita) y da una pantalla en
-                    // blanco. Mismo bug que ya se corrigió en el CTA del
-                    // Hero, acá se había colado de nuevo.
-                    <Link
-                      to={href}
+                    // Este botón chico es el que lleva a GitHub, no a la
+                    // página de instrucciones — para eso ya está el botón
+                    // grande. `release.htmlUrl` es la página de ESA release
+                    // exacta; sin ninguna cargada todavía (repo recién
+                    // creado, o falló la consulta) cae a la lista general de
+                    // Releases del repositorio.
+                    <a
+                      href={release?.htmlUrl ?? 'https://github.com/Litdemonick/PrismHub/releases'}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex h-10 w-10 items-center justify-center rounded-xl border transition-colors hover:opacity-80"
                       style={{ borderColor: 'var(--border)' }}
                       aria-label={label}
                     >
                       <ArrowUpRight className="h-4 w-4" />
-                    </Link>
+                    </a>
                   )}
                 </div>
               </motion.div>
