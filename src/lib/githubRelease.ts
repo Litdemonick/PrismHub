@@ -259,3 +259,42 @@ export function useGithubStars() {
   }, []);
   return stars;
 }
+
+/** La arquitectura REAL del celular, si el navegador la dice.
+ *
+ * Chrome para Android la informa por Client Hints
+ * (`navigator.userAgentData.getHighEntropyValues`): `architecture` "arm" y
+ * `bitness` "64" es un celular de 64 bits, que es casi todo desde 2017. Con
+ * eso el botón principal ofrece el APK de 64 bits (~46 MB) en vez del
+ * universal (~127 MB): casi un tercio, y una descarga de 127 MB es la que
+ * se quedaba trabada a mitad de camino en conexiones lentas o en el
+ * navegador de adentro de otras apps (reportado en vivo).
+ *
+ * Si el navegador no lo dice (Firefox, Samsung Internet viejo, un
+ * televisor), devuelve null y se ofrece el universal, que anda en todos: no
+ * se adivina nunca por el user agent. */
+export function useArquitecturaAndroid(): AndroidVariant | null {
+  const [arq, setArq] = useState<AndroidVariant | null>(null);
+  useEffect(() => {
+    let cancelled = false;
+    type UaData = {
+      getHighEntropyValues?: (h: string[]) => Promise<{ architecture?: string; bitness?: string }>;
+    };
+    const ua = (navigator as Navigator & { userAgentData?: UaData }).userAgentData;
+    if (!ua?.getHighEntropyValues) return;
+    ua.getHighEntropyValues(['architecture', 'bitness'])
+      .then((v) => {
+        if (cancelled) return;
+        const a = (v.architecture || '').toLowerCase();
+        const b = v.bitness || '';
+        if (a === 'arm' && b === '64') setArq('arm64-v8a');
+        else if (a === 'arm' && b === '32') setArq('armeabi-v7a');
+        else if (a === 'x86' && b === '64') setArq('x86_64');
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+  return arq;
+}

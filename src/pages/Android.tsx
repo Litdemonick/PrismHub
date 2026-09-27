@@ -9,6 +9,8 @@ import {
   formatSize,
   getAndroidDownloadHref,
   getAndroidAsset,
+  useArquitecturaAndroid,
+  formatDate,
   type AndroidVariant,
 } from '../lib/githubRelease';
 
@@ -18,6 +20,10 @@ const copy = {
     beforeTitle: 'Antes de instalar',
     installTitle: 'Instalar',
     mainLabel: 'Universal (todos los aparatos)',
+    mainLabelDetectado: 'Descargar para tu celular',
+    version: 'Versión',
+    publicada: 'publicada el',
+    trabada: '¿La descarga se queda trabada? Abrí esta página en Chrome (no desde el navegador de adentro de WhatsApp, Telegram u otra app) y tocá de nuevo. Si igual no avanza, probá el botón de tu arquitectura de abajo: pesa casi un tercio.',
     androidVersion: 'Android 7.0 o superior · sin Google Play',
     otherArch: 'Otras arquitecturas — para instalar el archivo más liviano y específico de tu aparato:',
     variants: [
@@ -62,6 +68,10 @@ const copy = {
     beforeTitle: 'Before installing',
     installTitle: 'Install',
     mainLabel: 'Universal (any device)',
+    mainLabelDetectado: 'Download for your phone',
+    version: 'Version',
+    publicada: 'released on',
+    trabada: "Is the download stuck? Open this page in Chrome (not in the built-in browser of WhatsApp, Telegram or another app) and tap again. If it still won't move, try your architecture's button below — it's about a third of the size.",
     androidVersion: 'Android 7.0 or later · no Google Play',
     otherArch: 'Other architectures — for the lightest file matching your specific device:',
     variants: [
@@ -107,15 +117,17 @@ export default function Android() {
   const { lang } = useLang();
   const c = copy[lang];
   const release = useLatestRelease();
-  // El botón principal siempre ofrece el Universal: un solo archivo que
-  // anda en cualquier arquitectura y que la propia app reconoce sola si el
-  // aparato es un celular, una tablet o un televisor — no hay nada que la
-  // página tenga que adivinar. Las arquitecturas sueltas (más livianas)
-  // quedan aparte, para quien ya sabe cuál le corresponde.
-  const mainHref = getAndroidDownloadHref(release);
-  const mainAsset = getAndroidAsset(release);
-  const mainLabel = c.mainLabel;
-  const otherVariants = c.variants;
+  // El botón principal: si el navegador dice qué procesador tiene el
+  // celular (ver useArquitecturaAndroid), el APK justo para él — casi un
+  // tercio del universal, que es la descarga que se trababa. Si no lo dice,
+  // el universal, que anda en cualquier aparato sin adivinar nada.
+  const arquitectura = useArquitecturaAndroid();
+  const variantePrincipal: AndroidVariant = arquitectura ?? 'auto';
+  const mainHref = getAndroidDownloadHref(release, variantePrincipal);
+  const mainAsset = getAndroidAsset(release, variantePrincipal);
+  const detectada = c.variants.find((v) => v.key === arquitectura);
+  const mainLabel = detectada ? `${c.mainLabelDetectado} (${detectada.label})` : c.mainLabel;
+  const otherVariants = c.variants.filter((v) => v.key !== arquitectura);
 
   return (
     <Layout>
@@ -151,17 +163,28 @@ export default function Android() {
               {c.installTitle}
             </p>
 
+            {/* Sin target="_blank": abrir la descarga en una pestaña nueva
+                dejaba en el celular una pantalla en blanco "cargando" que
+                parecía trabada. En la misma pestaña, el navegador la pasa
+                directo a su gestor de descargas. */}
             <a
               href={mainHref}
-              target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener"
               className="flex w-full items-center justify-center gap-2 rounded-2xl py-4 text-sm font-semibold shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98]"
               style={{ background: 'var(--accent)', color: 'var(--accent-ink)' }}
             >
               <Download className="h-4 w-4 shrink-0" />
               <span>{mainAsset?.size ? `${mainLabel} · ${formatSize(mainAsset.size)}` : mainLabel}</span>
             </a>
-            <p className="mt-3 text-center text-xs" style={{ color: 'var(--text-faint)' }}>{c.androidVersion}</p>
+            {/* Qué versión se descarga — antes no se decía en ningún lado. */}
+            {release?.tag && (
+              <p className="mt-3 text-center text-sm font-semibold" style={{ color: 'var(--text)' }}>
+                {c.version} {release.tag.replace(/^v/, '')}
+                {release.publishedAt ? ` · ${c.publicada} ${formatDate(release.publishedAt)}` : ''}
+              </p>
+            )}
+            <p className="mt-1 text-center text-xs" style={{ color: 'var(--text-faint)' }}>{c.androidVersion}</p>
+            <p className="mt-3 text-center text-[11px] leading-relaxed" style={{ color: 'var(--text-faint)' }}>{c.trabada}</p>
 
             {otherVariants.length > 0 && (
               <div className="mt-5 flex flex-col gap-2">
@@ -174,8 +197,7 @@ export default function Android() {
                       <a
                         key={v.key}
                         href={href}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        rel="noopener"
                         className="surface flex flex-col items-center gap-1 rounded-xl px-4 py-2.5 text-center text-xs transition-opacity hover:opacity-80"
                       >
                         <span className="flex items-center gap-1.5">
