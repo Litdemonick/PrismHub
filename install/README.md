@@ -4,10 +4,11 @@ Instalador universal para PrismHub con detección automática de plataforma y ar
 
 ## Instalación rápida
 
-### Linux / macOS
-```bash
-curl -fsSL https://raw.githubusercontent.com/Litdemonick/PrismHub/main/install/install.sh | bash
-```
+### Linux / macOS — sin verificar
+
+Todavía no se probó que PrismHub funcione en Linux, así que por ahora **no
+se puede instalar**: el script de instalación avisa y sale sin instalar
+nada. Se habilita cuando esté verificado.
 
 ### Windows (PowerShell)
 ```powershell

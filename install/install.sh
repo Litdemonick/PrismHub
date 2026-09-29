@@ -6,6 +6,16 @@
 
 set -euo pipefail
 
+# ─── Linux: sin verificar ───────────────────────────────────────────────────
+# Todavía no se probó que PrismHub funcione en Linux, así que por ahora no se
+# instala nada. Cuando esté verificado, se saca este bloque.
+echo ""
+echo "PrismHub en Linux: sin verificar."
+echo "Todavía no se probó que funcione en Linux, así que por ahora no se puede instalar."
+echo "Novedades en https://github.com/Litdemonick/PrismHub"
+echo ""
+exit 1
+
 # ─── Configuración ─────────────────────────────────────────────────────────
 REPO_OWNER="Litdemonick"
 REPO_NAME="PrismHub"

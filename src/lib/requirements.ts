@@ -9,11 +9,11 @@
  */
 export const requirements = {
   es: {
-    min: { os: 'Windows 10 (64 bits) · Android 7.0 · cualquier distro Linux x64', ram: '2 GB', cpu: '2 núcleos', storage: '~250 MB libres' },
-    rec: { os: 'Windows 11 · Android 10+ · distro Linux x64 reciente', ram: '4 GB o más', cpu: '4 núcleos o más', storage: '~500 MB libres' },
+    min: { os: 'Windows 10 (64 bits) · Android 7.0', ram: '2 GB', cpu: '2 núcleos', storage: '~250 MB libres' },
+    rec: { os: 'Windows 11 · Android 10+', ram: '4 GB o más', cpu: '4 núcleos o más', storage: '~500 MB libres' },
   },
   en: {
-    min: { os: 'Windows 10 (64-bit) · Android 7.0 · any x64 Linux distro', ram: '2 GB', cpu: '2 cores', storage: '~250 MB free' },
-    rec: { os: 'Windows 11 · Android 10+ · recent x64 Linux distro', ram: '4 GB or more', cpu: '4 cores or more', storage: '~500 MB free' },
+    min: { os: 'Windows 10 (64-bit) · Android 7.0', ram: '2 GB', cpu: '2 cores', storage: '~250 MB free' },
+    rec: { os: 'Windows 11 · Android 10+', ram: '4 GB or more', cpu: '4 cores or more', storage: '~500 MB free' },
   },
 } as const;

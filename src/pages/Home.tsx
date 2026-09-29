@@ -55,9 +55,10 @@ function Hero() {
   const platform = detectPlatform();
   const platformHref =
     platform === 'windows' ? '/windows' : platform === 'linux' ? '/linux' : platform === 'android' ? '/android' : null;
+  // Linux está SIN VERIFICAR: el botón no promete instalarlo. Lleva a su
+  // página, que explica que todavía no se puede.
   const ctaLabel =
     platform === 'windows' ? t('hero.cta.windows')
-    : platform === 'linux' ? t('hero.cta.linux')
     : platform === 'android' ? t('hero.cta.android')
     : t('hero.cta.download');
 
@@ -367,7 +368,6 @@ function DownloadSection() {
 
   const platforms: { key: DownloadPlatform; label: string; Icon: typeof WindowsIcon; href?: string }[] = [
     { key: 'windows', label: t('platforms.windows'), Icon: WindowsIcon, href: '/windows' },
-    { key: 'linux', label: t('platforms.linux'), Icon: LinuxIcon, href: '/linux' },
     { key: 'android', label: t('platforms.android'), Icon: AndroidIcon, href: '/android' },
   ];
 
@@ -480,9 +480,18 @@ function DownloadSection() {
               </motion.div>
             );
           })}
+          {/* Linux: se ve, pero SIN VERIFICAR — todavía no se probó en Linux,
+              así que no hay botón de instalar ni enlace de descarga. */}
+          <TarjetaBloqueada
+            Icon={LinuxIcon}
+            titulo={t('platforms.linux')}
+            etiqueta={t('platforms.unverified')}
+            detalle={t('platforms.unverifiedDesc')}
+            delay={platforms.length * 0.06}
+          />
           <motion.div
             {...fadeUp}
-            transition={{ ...fadeUp.transition, delay: platforms.length * 0.06 }}
+            transition={{ ...fadeUp.transition, delay: (platforms.length + 1) * 0.06 }}
             className="surface flex flex-col justify-between rounded-2xl p-6"
             aria-disabled="true"
           >
@@ -575,5 +584,60 @@ export default function Home() {
       <Requirements />
       <DownloadSection />
     </Layout>
+  );
+}
+
+/** Una plataforma que se ve pero no se puede instalar (sin verificar, en
+ * pausa): sin botón de instalar ni enlace de descarga. */
+function TarjetaBloqueada({
+  Icon,
+  titulo,
+  etiqueta,
+  detalle,
+  delay,
+}: {
+  Icon: typeof WindowsIcon;
+  titulo: string;
+  etiqueta: string;
+  detalle: string;
+  delay: number;
+}) {
+  return (
+    <motion.div
+      {...fadeUp}
+      transition={{ ...fadeUp.transition, delay }}
+      className="surface flex flex-col justify-between rounded-2xl p-6"
+      aria-disabled="true"
+    >
+      <div className="opacity-60">
+        <div className="mb-4 flex items-center justify-between">
+          <div
+            className="flex h-11 w-11 items-center justify-center rounded-xl"
+            style={{ background: 'var(--surface-2)', color: 'var(--text-faint)' }}
+          >
+            <Icon className="h-5 w-5" />
+          </div>
+          <span
+            className="whitespace-nowrap rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide"
+            style={{ background: 'var(--surface-2)', color: 'var(--text-faint)' }}
+          >
+            {etiqueta}
+          </span>
+        </div>
+        <h3 className="font-[family-name:var(--font-display)] text-lg font-semibold">{titulo}</h3>
+        <p className="mt-1 text-xs leading-relaxed" style={{ color: 'var(--text-faint)' }}>
+          {detalle}
+        </p>
+      </div>
+      <div className="mt-6 flex items-center gap-2">
+        <span
+          className="flex flex-1 cursor-not-allowed items-center justify-center gap-2 rounded-xl border py-2.5 text-sm font-semibold"
+          style={{ borderColor: 'var(--border)', color: 'var(--text-faint)' }}
+        >
+          <Lock className="h-4 w-4" />
+          {etiqueta}
+        </span>
+      </div>
+    </motion.div>
   );
 }

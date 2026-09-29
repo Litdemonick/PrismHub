@@ -9,7 +9,7 @@
 [![Releases](https://img.shields.io/github/v/release/Litdemonick/PrismHub?style=for-the-badge&label=versi%C3%B3n)](https://github.com/Litdemonick/PrismHub/releases)
 [![Descargas](https://img.shields.io/github/downloads/Litdemonick/PrismHub/total?style=for-the-badge)](https://github.com/Litdemonick/PrismHub/releases)
 [![Licencia](https://img.shields.io/badge/licencia-freeware-informational?style=for-the-badge)](https://litdemonick.github.io/PrismHub/license)
-[![Plataformas](https://img.shields.io/badge/plataformas-Windows%20%7C%20Linux%20%7C%20Android-informational?style=for-the-badge)](#instalación)
+[![Plataformas](https://img.shields.io/badge/plataformas-Windows%20%7C%20Android-informational?style=for-the-badge)](#instalación)
 
 **[🌐 Sitio oficial](https://litdemonick.github.io/PrismHub/) · [⬇️ Descargar](https://github.com/Litdemonick/PrismHub/releases/latest) · [💬 Discord](https://discord.gg/a9vBhQwqHa)**
 
@@ -77,7 +77,7 @@ historial o los favoritos que ya tenías.
 | Plataforma | Cómo |
 |---|---|
 | **Windows** | `irm https://raw.githubusercontent.com/Litdemonick/PrismHub/main/install/install.ps1 \| iex` |
-| **Linux** | `curl -fsSL https://raw.githubusercontent.com/Litdemonick/PrismHub/main/install/install.sh \| bash` — también hay [PKGBUILD](install/PKGBUILD) para Arch |
+| **Linux** | Sin verificar — todavía no se probó que funcione en Linux, así que por ahora no se puede instalar |
 | **Android** | Descargá el APK desde [Releases](https://github.com/Litdemonick/PrismHub/releases/latest) |
 | **Android TV** | En pausa por ahora — no se ofrece para instalar |
 
