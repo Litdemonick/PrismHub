@@ -15,11 +15,9 @@ nada. Se habilita cuando esté verificado.
 irm https://raw.githubusercontent.com/Litdemonick/PrismHub/main/install/install.ps1 | iex
 ```
 
-### Arch Linux (PKGBUILD)
-```bash
-cd install
-makepkg -si
-```
+### Arch Linux (PKGBUILD) — sin verificar
+
+Igual que el script: por ahora el PKGBUILD avisa y no instala nada.
 
 ## Dependencias (Linux)
 
@@ -34,7 +32,7 @@ makepkg -si
 
 | Plataforma | Asset |
 |---|---|
-| Linux x64 | `PrismHub-<tag>-linux-x64.tar.gz` |
-| Linux arm64 | `PrismHub-<tag>-linux-arm64.tar.gz` |
+| Linux x64 | sin verificar |
+| Linux arm64 | sin verificar |
 | Windows x64 | `PrismHub-<tag>-windows-x64.zip` |
 

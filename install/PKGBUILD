@@ -1,6 +1,11 @@
 ﻿# Maintainer: PrismHub <Litdemonick>
 # PKGBUILD for PrismHub binary release
 
+# Linux: sin verificar. Todavía no se probó que PrismHub funcione en Linux,
+# así que por ahora no se instala nada. Cuando esté verificado, se saca esto.
+echo "PrismHub en Linux: sin verificar. Por ahora no se puede instalar." >&2
+exit 1
+
 pkgname=prismhub-bin
 pkgver=1.0.0
 pkgrel=1

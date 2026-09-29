@@ -42,6 +42,7 @@ const copy = {
       repoLink: 'El proyecto en GitHub →',
       s2: '2. Instalación',
       androidNote: 'Android: descargá el APK desde',
+    linuxSinVerificar: 'Sin verificar: todavía no se probó que funcione en Linux, así que por ahora no se puede instalar.',
       releasesLink: 'Releases →',
       s3: '3. Formato de extensión',
       s4: '4. API disponible en extensiones',
@@ -63,6 +64,7 @@ const copy = {
       repoLink: 'The project on GitHub →',
       s2: '2. Installation',
       androidNote: 'Android: download the APK from',
+    linuxSinVerificar: "Not verified: it hasn't been tested on Linux yet, so it can't be installed for now.",
       releasesLink: 'Releases →',
       s3: '3. Extension format',
       s4: '4. API available inside extensions',
@@ -129,9 +131,12 @@ export default function Docs() {
 
             <Section title={s.s2}>
               <div className="space-y-4">
+                {/* Linux: sin verificar, sin comando para instalar. */}
                 <div>
                   <p className="mb-2 font-mono text-xs" style={{ color: 'var(--text-faint)' }}>Linux</p>
-                  <ConsoleCommand command="curl -fsSL https://raw.githubusercontent.com/Litdemonick/PrismHub/main/install/install.sh | bash" />
+                  <p className="text-xs" style={{ color: 'var(--text-faint)' }}>
+                    {s.linuxSinVerificar}
+                  </p>
                 </div>
                 <div>
                   <p className="mb-2 font-mono text-xs" style={{ color: 'var(--text-faint)' }}>Windows (PowerShell)</p>

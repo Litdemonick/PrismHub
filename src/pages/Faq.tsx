@@ -9,7 +9,6 @@ import { useLang } from '../lib/i18n';
 // 4 Salir) son los mismos que arman install.ps1 e install.sh — si esos
 // cambian, estos pasos se desactualizan y hay que revisarlos junto con ellos.
 const winCommand = 'irm https://raw.githubusercontent.com/Litdemonick/PrismHub/main/install/install.ps1 | iex';
-const linuxCommand = 'curl -fsSL https://raw.githubusercontent.com/Litdemonick/PrismHub/main/install/install.sh | bash';
 
 /** Limpia lo que se escribe en el buscador antes de usarlo para filtrar o
  * para armar el enlace a GitHub Issues.
@@ -55,11 +54,11 @@ const copy = {
     faqs: [
       {
         q: '¿Qué es PrismHub?',
-        a: 'Una aplicación multiplataforma (Windows, Linux, Android) para ver anime, series y películas, y leer manga. Todo el contenido sale de prism+, el repositorio oficial de extensiones — no es algo que cada usuario arme por su cuenta.',
+        a: 'Una aplicación multiplataforma (Windows y Android; Linux sin verificar todavía) para ver anime, series y películas, y leer manga. Todo el contenido sale de prism+, el repositorio oficial de extensiones — no es algo que cada usuario arme por su cuenta.',
       },
       {
         q: '¿Es compatible con Windows, Linux y Android?',
-        a: 'Sí, con instalador propio para cada uno: por consola o instalador .exe en Windows, por consola o paquete .tar.gz en Linux, APK en Android. El APK Universal sirve para teléfono y tablet. La versión para Android TV está en pausa por ahora.',
+        a: 'Windows y Android sí, con instalador propio: por consola o instalador .exe en Windows, APK en Android. Linux todavía está sin verificar y por ahora no se puede instalar. El APK Universal sirve para teléfono y tablet. La versión para Android TV está en pausa por ahora.',
       },
       {
         q: '¿En qué idioma está el contenido?',
@@ -121,11 +120,10 @@ const copy = {
       },
       {
         Icon: LinuxIcon,
-        title: 'Instalar en Linux por consola',
+        title: 'Linux: sin verificar',
         steps: [
-          'Abrí una terminal.',
-          `Pegá este comando y presioná Enter: ${linuxCommand}`,
-          'Elegí la opción [1] Instalar en el menú que aparece.',
+          'Todavía no se probó que PrismHub funcione en Linux, así que por ahora no se puede instalar.',
+          'Cuando esté verificado, acá va a estar el comando de instalación.',
         ],
       },
       {
@@ -166,11 +164,11 @@ const copy = {
     faqs: [
       {
         q: 'What is PrismHub?',
-        a: 'A cross-platform app (Windows, Linux, Android) for watching anime, series and movies, and reading manga. All the content comes from prism+, the official extensions repository — it\'s not something each user assembles on their own.',
+        a: 'A cross-platform app (Windows and Android; Linux not verified yet) for watching anime, series and movies, and reading manga. All the content comes from prism+, the official extensions repository — it\'s not something each user assembles on their own.',
       },
       {
         q: 'Does it support Windows, Linux and Android?',
-        a: 'Yes, with its own installer for each: via console or a .exe installer on Windows, via console or a .tar.gz package on Linux, an APK on Android. The Universal APK works on phone and tablet. The Android TV version is on hold for now.',
+        a: "Windows and Android yes, with their own installer: via console or a .exe installer on Windows, an APK on Android. Linux isn't verified yet and can't be installed for now. The Universal APK works on phone and tablet. The Android TV version is on hold for now.",
       },
       {
         q: 'What language is the content in?',
@@ -232,11 +230,10 @@ const copy = {
       },
       {
         Icon: LinuxIcon,
-        title: 'Install on Linux via console',
+        title: 'Linux: not verified',
         steps: [
-          'Open a terminal.',
-          `Paste this command and press Enter: ${linuxCommand}`,
-          'Choose option [1] Install in the menu that shows up.',
+          "PrismHub hasn't been tested on Linux yet, so it can't be installed for now.",
+          "Once it's verified, the install command will be here.",
         ],
       },
       {
