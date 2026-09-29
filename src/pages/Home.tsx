@@ -1,11 +1,11 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { ArrowUpRight, Download, GitFork, Check, ZoomIn, X } from 'lucide-react';
+import { ArrowUpRight, Download, GitFork, Check, ZoomIn, X, Lock } from 'lucide-react';
 import Layout from '../components/Layout';
 import DeveloperNote from '../components/DeveloperNote';
 import RequirementsTable from '../components/RequirementsTable';
-import { WindowsIcon, LinuxIcon, AndroidIcon } from '../components/PlatformIcons';
+import { WindowsIcon, LinuxIcon, AndroidIcon, AndroidTvIcon } from '../components/PlatformIcons';
 import { useLang } from '../lib/i18n';
 import {
   APP_VERSION,
@@ -149,7 +149,7 @@ function Hero() {
             {/* En un celular de pie esta columna es un tercio del ancho: la
                 versión y la etiqueta no entraban en una fila y «beta» se
                 cortaba. Ahora la etiqueta baja si no entra. */}
-            <div className="flex flex-wrap items-baseline gap-x-1.5 gap-y-1">
+            <div className="flex flex-wrap items-baseline justify-center gap-x-1.5 gap-y-1">
               <span className="font-[family-name:var(--font-display)] text-xl font-bold sm:text-2xl">{release?.tag ?? APP_VERSION}</span>
               <span
                 className="whitespace-nowrap rounded-md px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide"
@@ -404,9 +404,10 @@ function DownloadSection() {
           <span className="text-xs" style={{ color: 'var(--text-faint)' }}>{t('download.betaZoneDesc')}</span>
         </motion.div>
 
-        {/* Tres plataformas (Android TV está en pausa): tres columnas, sin una
-            tarjeta sola en la segunda fila. */}
-        <div className="grid gap-4 sm:grid-cols-3">
+        {/* Cuatro tarjetas parejas: las tres plataformas y Android TV, que se
+            ve pero está EN PAUSA (no se está probando ni corrigiendo): sin
+            botón de instalar, sin enlace a GitHub y sin código de Downloader. */}
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {platforms.map(({ key, label, Icon, href }, i) => {
             const asset = release?.[key];
             const isNew =
@@ -479,6 +480,44 @@ function DownloadSection() {
               </motion.div>
             );
           })}
+          <motion.div
+            {...fadeUp}
+            transition={{ ...fadeUp.transition, delay: platforms.length * 0.06 }}
+            className="surface flex flex-col justify-between rounded-2xl p-6"
+            aria-disabled="true"
+          >
+            <div className="opacity-60">
+              <div className="mb-4 flex items-center justify-between">
+                <div
+                  className="flex h-11 w-11 items-center justify-center rounded-xl"
+                  style={{ background: 'var(--surface-2)', color: 'var(--text-faint)' }}
+                >
+                  <AndroidTvIcon className="h-5 w-5" />
+                </div>
+                <span
+                  className="whitespace-nowrap rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide"
+                  style={{ background: 'var(--surface-2)', color: 'var(--text-faint)' }}
+                >
+                  {t('platforms.paused')}
+                </span>
+              </div>
+              <h3 className="font-[family-name:var(--font-display)] text-lg font-semibold">
+                {t('platforms.androidTv')}
+              </h3>
+              <p className="mt-1 text-xs leading-relaxed" style={{ color: 'var(--text-faint)' }}>
+                {t('platforms.pausedDesc')}
+              </p>
+            </div>
+            <div className="mt-6 flex items-center gap-2">
+              <span
+                className="flex flex-1 cursor-not-allowed items-center justify-center gap-2 rounded-xl border py-2.5 text-sm font-semibold"
+                style={{ borderColor: 'var(--border)', color: 'var(--text-faint)' }}
+              >
+                <Lock className="h-4 w-4" />
+                {t('platforms.paused')}
+              </span>
+            </div>
+          </motion.div>
         </div>
 
         <motion.div {...fadeUp} className="mt-12 border-t pt-10" style={{ borderColor: 'var(--border)' }}>

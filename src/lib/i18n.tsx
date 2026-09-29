@@ -38,6 +38,9 @@ export const dict = {
     'platforms.windows': 'Windows',
     'platforms.linux': 'Linux',
     'platforms.android': 'Android',
+    'platforms.androidTv': 'Android TV',
+    'platforms.paused': 'En pausa',
+    'platforms.pausedDesc': 'Por ahora no se puede instalar en un televisor: esta versión no se está probando ni corrigiendo.',
     'platforms.install': 'Instalar',
     'platforms.new': 'NUEVO',
 
@@ -132,6 +135,9 @@ export const dict = {
     'platforms.windows': 'Windows',
     'platforms.linux': 'Linux',
     'platforms.android': 'Android',
+    'platforms.androidTv': 'Android TV',
+    'platforms.paused': 'On hold',
+    'platforms.pausedDesc': "It can't be installed on a TV for now: this version isn't being tested or fixed.",
     'platforms.install': 'Install',
     'platforms.new': 'NEW',
 

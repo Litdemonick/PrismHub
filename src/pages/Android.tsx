@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Download, Settings2, ShieldCheck, FolderDown, AlertTriangle } from 'lucide-react';
+import { Download, Settings2, ShieldCheck, FolderDown, AlertTriangle, Tv, Lock } from 'lucide-react';
 import Layout from '../components/Layout';
 import DeveloperNote from '../components/DeveloperNote';
 import { AndroidIcon } from '../components/PlatformIcons';
@@ -17,6 +17,9 @@ import {
 const copy = {
   es: {
     title: 'Instalar en Android',
+    tvTitle: 'Android TV — en pausa',
+    tvDesc:
+      'Por ahora no se ofrece para televisor: esa versión no se está probando ni corrigiendo. Cuando vuelva, las instrucciones para instalarla van a estar acá.',
     beforeTitle: 'Antes de instalar',
     installTitle: 'Instalar',
     mainLabel: 'Universal (todos los aparatos)',
@@ -56,6 +59,9 @@ const copy = {
   },
   en: {
     title: 'Install on Android',
+    tvTitle: 'Android TV — on hold',
+    tvDesc:
+      "It isn't offered for TVs right now: that version isn't being tested or fixed. When it's back, the install instructions will be here.",
     beforeTitle: 'Before installing',
     installTitle: 'Install',
     mainLabel: 'Universal (any device)',
@@ -218,6 +224,24 @@ export default function Android() {
                 </div>
               </motion.div>
             ))}
+          </div>
+
+          {/* Android TV: se dice que está en pausa, sin código de Downloader ni
+              pasos para instalar — no se está probando ni corrigiendo. */}
+          <div className="surface mt-4 flex items-start gap-3 rounded-2xl p-5 opacity-80" aria-disabled="true">
+            <div
+              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg"
+              style={{ background: 'var(--surface-2)', color: 'var(--text-faint)' }}
+            >
+              <Tv className="h-4 w-4" />
+            </div>
+            <div className="flex-1">
+              <div className="mb-1 flex items-center gap-2 text-[13px] font-semibold">
+                <Lock className="h-3.5 w-3.5" style={{ color: 'var(--text-faint)' }} />
+                {c.tvTitle}
+              </div>
+              <div className="text-[12px] leading-relaxed" style={{ color: 'var(--text-faint)' }}>{c.tvDesc}</div>
+            </div>
           </div>
 
           <div className="mx-auto mt-4 max-w-lg">
