@@ -5,7 +5,7 @@ import { ArrowUpRight, Download, GitFork, Check, ZoomIn, X } from 'lucide-react'
 import Layout from '../components/Layout';
 import DeveloperNote from '../components/DeveloperNote';
 import RequirementsTable from '../components/RequirementsTable';
-import { WindowsIcon, LinuxIcon, AndroidIcon, AndroidTvIcon } from '../components/PlatformIcons';
+import { WindowsIcon, LinuxIcon, AndroidIcon } from '../components/PlatformIcons';
 import { useLang } from '../lib/i18n';
 import {
   APP_VERSION,
@@ -146,10 +146,13 @@ function Hero() {
             <div className="mt-1 text-xs" style={{ color: 'var(--text-faint)' }}>{t('hero.stat.platforms')}</div>
           </div>
           <div>
-            <div className="flex items-baseline gap-1.5">
-              <span className="font-[family-name:var(--font-display)] text-2xl font-bold">{release?.tag ?? APP_VERSION}</span>
+            {/* En un celular de pie esta columna es un tercio del ancho: la
+                versión y la etiqueta no entraban en una fila y «beta» se
+                cortaba. Ahora la etiqueta baja si no entra. */}
+            <div className="flex flex-wrap items-baseline gap-x-1.5 gap-y-1">
+              <span className="font-[family-name:var(--font-display)] text-xl font-bold sm:text-2xl">{release?.tag ?? APP_VERSION}</span>
               <span
-                className="rounded-md px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide"
+                className="whitespace-nowrap rounded-md px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide"
                 style={{ background: 'color-mix(in srgb, var(--accent) 16%, transparent)', color: 'var(--accent)' }}
               >
                 beta
@@ -366,7 +369,6 @@ function DownloadSection() {
     { key: 'windows', label: t('platforms.windows'), Icon: WindowsIcon, href: '/windows' },
     { key: 'linux', label: t('platforms.linux'), Icon: LinuxIcon, href: '/linux' },
     { key: 'android', label: t('platforms.android'), Icon: AndroidIcon, href: '/android' },
-    { key: 'androidTv', label: t('platforms.androidTv'), Icon: AndroidTvIcon, href: '/android' },
   ];
 
   return (
@@ -402,7 +404,9 @@ function DownloadSection() {
           <span className="text-xs" style={{ color: 'var(--text-faint)' }}>{t('download.betaZoneDesc')}</span>
         </motion.div>
 
-        <div className="grid gap-4 sm:grid-cols-2">
+        {/* Tres plataformas (Android TV está en pausa): tres columnas, sin una
+            tarjeta sola en la segunda fila. */}
+        <div className="grid gap-4 sm:grid-cols-3">
           {platforms.map(({ key, label, Icon, href }, i) => {
             const asset = release?.[key];
             const isNew =

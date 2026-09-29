@@ -16,22 +16,19 @@ export type ReleaseInfo = {
   windows?: ReleaseAsset;
   linux?: ReleaseAsset;
   android?: ReleaseAsset;
-  /// El APK con nombre de televisor. Es una copia IDENTICA del de Android
-  /// —un solo APK sirve para telefono, tablet y TV— y existe para que en la
-  /// pagina se vea de un vistazo cual bajar para un televisor.
-  androidTv?: ReleaseAsset;
   androidUniversal?: ReleaseAsset;
   androidArm64?: ReleaseAsset;
   androidArmv7?: ReleaseAsset;
   androidX64?: ReleaseAsset;
 };
 
-export type DownloadPlatform = 'windows' | 'linux' | 'android' | 'androidTv';
+// Android TV está en pausa: la página ya no lo ofrece (ni el APK de TV ni el
+// código de Downloader).
+export type DownloadPlatform = 'windows' | 'linux' | 'android';
 export type AndroidVariant = 'auto' | 'arm64-v8a' | 'armeabi-v7a' | 'x86_64';
 
 const fallbackAssetNames = {
   windows: `PrismHub-setup-windows-${APP_VERSION}.exe`,
-  androidTv: `PrismHub-androidtv-universal.apk`,
   linux: `PrismHub-${APP_VERSION}-linux-x64.tar.gz`,
   // Sin la version adentro: estos son el respaldo para cuando no se puede
   // consultar la API de GitHub, y con la version clavada apuntaban a una
@@ -49,7 +46,6 @@ function latestDownloadUrl(assetName: string) {
 
 export const fallbackDownloads = {
   windows: latestDownloadUrl(fallbackAssetNames.windows),
-  androidTv: latestDownloadUrl(fallbackAssetNames.androidTv),
   linux: latestDownloadUrl(fallbackAssetNames.linux),
   androidUniversal: latestDownloadUrl(fallbackAssetNames.androidUniversal),
   androidArm64: latestDownloadUrl(fallbackAssetNames.androidArm64),
@@ -81,11 +77,9 @@ function assetsToRelease(data: {
 }): ReleaseInfo {
   const assets: ReleaseAsset[] = data.assets || [];
   const find = (re: RegExp) => assets.find((a) => re.test(a.name));
-  // Los APK de televisor llevan "androidtv" en el nombre y son una copia
-  // identica de los de Android. Se excluyen de la busqueda de telefono para
-  // que cada boton apunte al archivo que dice su nombre — si no, el de
-  // "Android" podia terminar ofreciendo el de TV, que confunde aunque sea el
-  // mismo archivo.
+  // Los releases viejos traen APK de televisor ("androidtv" en el nombre).
+  // Android TV está en pausa, así que nunca se ofrecen: se excluyen de toda
+  // búsqueda de APK.
   const esDeTv = (nombre: string) => /androidtv/i.test(nombre);
   const buscarApk = (re: RegExp) =>
     assets.find((a) => re.test(a.name) && !esDeTv(a.name));
@@ -97,9 +91,6 @@ function assetsToRelease(data: {
   // "esta app no es compatible con la TV", y desde la pagina no hay forma de
   // saber que procesador tiene quien descarga.
   const androidUniversal = buscarApk(/android-universal\.apk$/i);
-  const androidTv = find(/androidtv-universal\.apk$/i) ||
-      find(/androidtv.*arm64-v8a.*\.apk$/i) ||
-      find(/androidtv.*\.apk$/i);
   return {
     tag: data.tag_name,
     htmlUrl: data.html_url,
@@ -108,11 +99,8 @@ function assetsToRelease(data: {
     windows: find(/setup.*\.exe$/i) || find(/\.exe$/i) || find(/windows.*\.zip$/i),
     linux: find(/linux.*\.tar\.gz$/i),
     android: androidUniversal || androidArm64 || androidArmv7 || androidX64 ||
-        find(/\.apk$/i),
+        buscarApk(/\.apk$/i),
     androidUniversal,
-    // Si un release viejo no trae el de televisor, se cae al de Android: es
-    // el mismo archivo, asi que el boton sigue sirviendo igual.
-    androidTv: androidTv || androidArm64 || find(/\.apk$/i),
     androidArm64,
     androidArmv7,
     androidX64,

@@ -59,7 +59,7 @@ const copy = {
       },
       {
         q: '¿Es compatible con Windows, Linux y Android?',
-        a: 'Sí, con instalador propio para cada uno: por consola o instalador .exe en Windows, por consola o paquete .tar.gz en Linux, APK en Android. El mismo APK Universal sirve para teléfono, tablet y Android TV — la app reconoce sola en qué aparato está.',
+        a: 'Sí, con instalador propio para cada uno: por consola o instalador .exe en Windows, por consola o paquete .tar.gz en Linux, APK en Android. El APK Universal sirve para teléfono y tablet. La versión para Android TV está en pausa por ahora.',
       },
       {
         q: '¿En qué idioma está el contenido?',
@@ -170,7 +170,7 @@ const copy = {
       },
       {
         q: 'Does it support Windows, Linux and Android?',
-        a: 'Yes, with its own installer for each: via console or a .exe installer on Windows, via console or a .tar.gz package on Linux, an APK on Android. The same Universal APK works on phone, tablet and Android TV — the app recognizes the device on its own.',
+        a: 'Yes, with its own installer for each: via console or a .exe installer on Windows, via console or a .tar.gz package on Linux, an APK on Android. The Universal APK works on phone and tablet. The Android TV version is on hold for now.',
       },
       {
         q: 'What language is the content in?',

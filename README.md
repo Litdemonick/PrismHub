@@ -9,7 +9,7 @@
 [![Releases](https://img.shields.io/github/v/release/Litdemonick/PrismHub?style=for-the-badge&label=versi%C3%B3n)](https://github.com/Litdemonick/PrismHub/releases)
 [![Descargas](https://img.shields.io/github/downloads/Litdemonick/PrismHub/total?style=for-the-badge)](https://github.com/Litdemonick/PrismHub/releases)
 [![Licencia](https://img.shields.io/badge/licencia-freeware-informational?style=for-the-badge)](https://litdemonick.github.io/PrismHub/license)
-[![Plataformas](https://img.shields.io/badge/plataformas-Windows%20%7C%20Linux%20%7C%20Android%20%7C%20Android%20TV-informational?style=for-the-badge)](#instalación)
+[![Plataformas](https://img.shields.io/badge/plataformas-Windows%20%7C%20Linux%20%7C%20Android-informational?style=for-the-badge)](#instalación)
 
 **[🌐 Sitio oficial](https://litdemonick.github.io/PrismHub/) · [⬇️ Descargar](https://github.com/Litdemonick/PrismHub/releases/latest) · [💬 Discord](https://discord.gg/a9vBhQwqHa)**
 
@@ -34,8 +34,7 @@
 
 Una aplicación **nativa** — no una página web empaquetada — para ver anime,
 series y películas en streaming en vivo, leer manga y novelas, todo desde
-un mismo lugar. Corre igual de bien en una PC, un celular o el televisor
-de la sala.
+un mismo lugar. Corre igual de bien en una PC que en un celular.
 
 - **Streaming en vivo, sin descargas y sin límite de catálogo.** El
   contenido sale de extensiones que hablan con cada sitio en el momento —
@@ -52,9 +51,8 @@ de la sala.
 - **Tu progreso, en tu aparato.** Sin cuentas, sin servidores propios
   registrando qué mirás: el historial y los favoritos viven donde los
   usás.
-- **Pensada también para el televisor.** El mismo instalador de Android
-  corre en Android TV, con una interfaz propia para control remoto: filas
-  densas, foco siempre visible, sin gestos de dedo.
+- **Descargas para ver sin conexión.** Episodios y capítulos sueltos o
+  temporadas enteras, para mirar o leer sin internet desde la misma app.
 - **Sin anuncios.** En ningún lado.
 
 ## Capturas
@@ -81,22 +79,7 @@ historial o los favoritos que ya tenías.
 | **Windows** | `irm https://raw.githubusercontent.com/Litdemonick/PrismHub/main/install/install.ps1 \| iex` |
 | **Linux** | `curl -fsSL https://raw.githubusercontent.com/Litdemonick/PrismHub/main/install/install.sh \| bash` — también hay [PKGBUILD](install/PKGBUILD) para Arch |
 | **Android** | Descargá el APK desde [Releases](https://github.com/Litdemonick/PrismHub/releases/latest) |
-| **Android TV** | Ver abajo ↓ |
-
-### Instalar en Android TV
-
-En un televisor no hay navegador cómodo para bajar un APK. Usá la app
-**[Downloader](https://play.google.com/store/apps/details?id=com.esaba.downloader)**
-(gratis, en la tienda de tu TV) y cargá este código cuando te lo pida:
-
-```
-9186097
-```
-
-Eso te lleva directo al instalador. Sin escribir ninguna dirección larga
-con el control remoto. Si preferís hacerlo manual, también funciona por
-USB (descargalo en el celular o la PC y abrilo desde el gestor de
-archivos del televisor) o por red (SMB/FTP, si el televisor lo soporta).
+| **Android TV** | En pausa por ahora — no se ofrece para instalar |
 
 ## Extensiones
 

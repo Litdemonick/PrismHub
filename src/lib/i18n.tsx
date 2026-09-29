@@ -38,7 +38,6 @@ export const dict = {
     'platforms.windows': 'Windows',
     'platforms.linux': 'Linux',
     'platforms.android': 'Android',
-    'platforms.androidTv': 'Android TV',
     'platforms.install': 'Instalar',
     'platforms.new': 'NUEVO',
 
@@ -53,9 +52,9 @@ export const dict = {
     'features.f3.title': 'Varios servidores por episodio',
     'features.f3.desc':
       'Si uno falla, cambiar al siguiente es un solo toque: el reproductor ya trae la lista completa que declaró la extensión, no hay que salir a buscarla.',
-    'features.f4.title': 'Pensado también para el televisor',
+    'features.f4.title': 'Descargá y mirá sin conexión',
     'features.f4.desc':
-      'El mismo APK de Android funciona en Android TV, con una interfaz propia para control remoto: filas densas, foco visible, sin gestos de dedo.',
+      'Bajá episodios y capítulos sueltos o temporadas enteras, y miralos o leelos sin internet desde la misma app.',
     'features.f5.title': 'Tu progreso, en tu aparato',
     'features.f5.desc':
       'Sin cuentas ni servidores propios que guarden qué mirás. El historial y los favoritos viven en el aparato donde los usás.',
@@ -66,7 +65,7 @@ export const dict = {
     'showcase.eyebrow': 'La app, tal cual se ve',
     'showcase.title': 'Un diseño distinto por plataforma, no una web estirada',
     'showcase.desc':
-      'Escritorio, teléfono y televisor no navegan igual — cada uno tiene su propia interfaz, no un mismo diseño achicado o agrandado.',
+      'Escritorio y teléfono no navegan igual — cada uno tiene su propia interfaz, no un mismo diseño achicado o agrandado.',
 
     'requirements.eyebrow': 'Antes de instalar',
     'requirements.title': 'Requisitos',
@@ -133,7 +132,6 @@ export const dict = {
     'platforms.windows': 'Windows',
     'platforms.linux': 'Linux',
     'platforms.android': 'Android',
-    'platforms.androidTv': 'Android TV',
     'platforms.install': 'Install',
     'platforms.new': 'NEW',
 
@@ -148,9 +146,9 @@ export const dict = {
     'features.f3.title': 'Several servers per episode',
     'features.f3.desc':
       "If one goes down, switching to the next is a single tap: the player already has the full list the extension declared, no need to go looking for it.",
-    'features.f4.title': 'Built for the TV too',
+    'features.f4.title': 'Download and watch offline',
     'features.f4.desc':
-      "The same Android APK runs on Android TV, with its own remote-friendly interface: dense rows, visible focus, no finger gestures.",
+      'Grab single episodes and chapters or whole seasons, and watch or read them without internet, right in the app.',
     'features.f5.title': 'Your progress, on your device',
     'features.f5.desc':
       "No accounts, no servers of ours tracking what you watch. History and favorites live on the device you use them on.",
@@ -161,7 +159,7 @@ export const dict = {
     'showcase.eyebrow': 'The app, as it looks',
     'showcase.title': 'A different design per platform, not a stretched webpage',
     'showcase.desc':
-      "Desktop, phone and TV don't navigate the same way — each gets its own interface, not one layout scaled up or down.",
+      "Desktop and phone don't navigate the same way — each gets its own interface, not one layout scaled up or down.",
 
     'requirements.eyebrow': 'Before installing',
     'requirements.title': 'Requirements',

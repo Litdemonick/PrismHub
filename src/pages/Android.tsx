@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Download, Settings2, ShieldCheck, FolderDown, Tv, AlertTriangle, Usb, FileDown } from 'lucide-react';
+import { Download, Settings2, ShieldCheck, FolderDown, AlertTriangle } from 'lucide-react';
 import Layout from '../components/Layout';
 import DeveloperNote from '../components/DeveloperNote';
 import { AndroidIcon } from '../components/PlatformIcons';
@@ -31,15 +31,6 @@ const copy = {
       { label: 'ARM32 (armeabi-v7a)', hint: 'celulares viejos, de antes de 2017', key: 'armeabi-v7a' as AndroidVariant },
       { label: 'x86_64', hint: 'PCs con Android, tablets Intel/AMD o emuladores (BlueStacks, etc.)', key: 'x86_64' as AndroidVariant },
     ],
-    tvTitle: '¿Vas a instalarlo en un televisor?',
-    tvDesc:
-      'Es el mismo APK de arriba — la app detecta sola que corre en Android TV y cambia a su propia interfaz para control remoto. Un televisor no tiene el mismo navegador que un celular, así que el APK tiene que llegar por alguna de estas tres formas:',
-    tvSteps: [
-      { Icon: Usb, title: 'Por USB', desc: 'Descargalo en el celular o la PC, copialo a un pendrive y abrilo desde el gestor de archivos del televisor.' },
-      { Icon: FileDown, title: 'Con la app "Downloader"', desc: 'Instalá "Downloader" (de AFTVnews) desde la tienda del televisor, y ahí escribí el código 9186097 (o pegá la URL) — la descarga e instala directo, sin cables.' },
-      { Icon: Tv, title: 'Gestor de archivos con red', desc: 'Si el televisor tiene uno con soporte SMB/FTP, se puede compartir la carpeta de descargas del celular o la PC y abrir el APK desde ahí.' },
-    ],
-    downloaderCodeText: 'Código para Downloader',
     steps: [
       {
         Icon: Settings2,
@@ -79,15 +70,6 @@ const copy = {
       { label: 'ARM32 (armeabi-v7a)', hint: 'older phones, from before 2017', key: 'armeabi-v7a' as AndroidVariant },
       { label: 'x86_64', hint: 'Android PCs, Intel/AMD tablets, or emulators (BlueStacks, etc.)', key: 'x86_64' as AndroidVariant },
     ],
-    tvTitle: 'Installing on a TV?',
-    tvDesc:
-      "It's the same APK from above — the app detects on its own that it's running on Android TV and switches to its own remote-friendly interface. A TV doesn't have the same browser a phone does, so the APK needs to get there one of these three ways:",
-    tvSteps: [
-      { Icon: Usb, title: 'Over USB', desc: 'Download it on your phone or PC, copy it to a flash drive, and open it from the TV\'s file manager.' },
-      { Icon: FileDown, title: 'With the "Downloader" app', desc: 'Install "Downloader" (by AFTVnews) from the TV\'s app store, then type the code 9186097 (or paste the APK URL) — it downloads and installs it directly, no cables needed.' },
-      { Icon: Tv, title: 'A network file manager', desc: 'If the TV has one with SMB/FTP support, share the downloads folder from your phone or PC and open the APK from there.' },
-    ],
-    downloaderCodeText: 'Downloader App Code',
     steps: [
       {
         Icon: Settings2,
@@ -236,36 +218,6 @@ export default function Android() {
                 </div>
               </motion.div>
             ))}
-          </div>
-
-          <div className="surface mt-4 rounded-2xl p-5">
-            <div className="mb-4 flex items-start gap-3">
-              <div
-                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg"
-                style={{ background: 'var(--surface-2)', color: 'var(--accent)' }}
-              >
-                <Tv className="h-4 w-4" />
-              </div>
-              <div className="flex-1">
-                <div className="mb-1 text-[13px] font-semibold">{c.tvTitle}</div>
-                <div className="text-[12px] leading-relaxed" style={{ color: 'var(--text-faint)' }}>{c.tvDesc}</div>
-                <div className="mt-4 flex flex-col items-center justify-center rounded-xl border border-dashed p-3 transition-colors hover:border-solid" style={{ borderColor: 'var(--accent)', background: 'var(--accent-faint, rgba(255,255,255,0.05))' }}>
-                  <span className="text-[11px] font-medium uppercase tracking-wider" style={{ color: 'var(--text-faint)' }}>{c.downloaderCodeText}</span>
-                  <span className="font-[family-name:var(--font-display)] text-3xl font-bold tracking-widest mt-0.5" style={{ color: 'var(--accent)' }}>9186097</span>
-                </div>
-              </div>
-            </div>
-            <div className="grid gap-3 border-t pt-4 sm:grid-cols-3" style={{ borderColor: 'var(--border)' }}>
-              {c.tvSteps.map((s) => (
-                <div key={s.title} className="flex items-start gap-3 sm:flex-col sm:gap-2 sm:pl-0 pl-11">
-                  <s.Icon className="mt-0.5 h-4 w-4 shrink-0" style={{ color: 'var(--accent)' }} />
-                  <div>
-                    <div className="mb-0.5 text-[12px] font-semibold">{s.title}</div>
-                    <div className="text-[11px] leading-relaxed" style={{ color: 'var(--text-faint)' }}>{s.desc}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
 
           <div className="mx-auto mt-4 max-w-lg">
